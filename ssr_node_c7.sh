@@ -63,7 +63,7 @@ while :; do
   esac
 done
 if [[ ${is_auto} != "y" ]]; then
-	echo "Press Y for continue the installation process, or press any key else to exit."
+	echo "按Y继续安装，或按任意键退出."
 	read is_install
 	if [[ ${is_install} != "y" && ${is_install} != "Y" ]]; then
     	echo -e "Installation has been canceled..."
@@ -122,7 +122,7 @@ if [[ ${is_auto} != "y" ]]; then
 		fi			
 	done
 	while :; do echo
-		echo -n "Do you want to enable multi user in single port feature?(Y/N)"
+		echo -n "是否要在单端口中启用多用户功能?(Y/N)"
 		read is_mu
 		if [[ ${is_mu} != "y" && ${is_mu} != "Y" && ${is_mu} != "N" && ${is_mu} != "n" ]]; then
 			echo -n "Bad answer! Please only input number Y or N"
@@ -233,7 +233,7 @@ do_salt_minion(){
 	sed -i -e "s/#master: salt/master: ${salt_master_ip}/g" /etc/salt/minion
 }
 while :; do echo
-	echo -n "Do you want to enable BBR feature(from mainline kernel) and optimizate the system?(Y/N)"
+	echo -n "是否在内核启用BBR?(Y/N)"
 	read is_bbr
 	if [[ ${is_bbr} != "y" && ${is_bbr} != "Y" && ${is_bbr} != "N" && ${is_bbr} != "n" ]]; then
 		echo -n "Bad answer! Please only input number Y or N"
@@ -242,7 +242,7 @@ while :; do echo
 	fi
 done
 while :; do echo
-	echo -n "Do you want to register SSR Node as system service?(Y/N)"
+	echo -n "是否要将SSR进程注册为系统服务?(Y/N)"
 	read is_service
 	if [[ ${is_service} != "y" && ${is_service} != "Y" && ${is_service} != "N" && ${is_service} != "n" ]]; then
 		echo -n "Bad answer! Please only input number Y or N"
@@ -251,7 +251,7 @@ while :; do echo
 	fi
 done
 while :; do echo
-	echo -n "Do you want to install Salt Minion?(Y/N)"
+	echo -n "是否需要安装Salt Minion?(Y/N)"
 	read is_salt_minion
 	if [[ ${is_salt_minion} != "y" && ${is_salt_minion} != "Y" && ${is_salt_minion} != "N" && ${is_salt_minion} != "n" ]]; then
 		echo -n "Bad answer! Please only input number Y or N"
@@ -272,7 +272,7 @@ fi
 if [[ ${is_salt_minion} == "y" || ${is_salt_minion} == "Y" ]]; then
 	do_salt_minion
 fi
-echo "System require a reboot to complete the installation process, press Y to continue, or press any key else to exit this script."
+echo "系统需要重新启动才能完成安装过程，按Y继续，或按任意键退出此脚本."
 read is_reboot
 if [[ ${is_reboot} == "y" || ${is_reboot} == "Y" ]]; then
   reboot
